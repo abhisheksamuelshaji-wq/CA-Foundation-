@@ -1,0 +1,14 @@
+{
+  "name": "CA Foundation Study Tracker",
+  "short_name": "CA Tracker",
+  "description": "61-day CA Foundation timetable, progress tracker, and buffer-day catch-up queue.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f5f7fb",
+  "theme_color": "#182b55",
+  "icons": [
+    {"src":"icons/icon-192.png","sizes":"192x192","type":"image/png","purpose":"any maskable"},
+    {"src":"icons/icon-512.png","sizes":"512x512","type":"image/png","purpose":"any maskable"}
+  ]
+}

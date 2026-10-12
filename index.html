@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#182b55">
+<meta name="description" content="CA Foundation 61-day study tracker with buffer-day catch-up planning.">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icons/icon-192.png">
+<title>CA Foundation Tracker</title>
+<style>
+:root{--bg:#f5f7fb;--card:#fff;--ink:#182230;--muted:#667085;--line:#e4e7ec;--accent:#375dfb;--green:#16845b;--orange:#b54708}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.45 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+header{background:#182b55;color:#fff;padding:24px 17px}header,main{max-width:980px;margin:auto}header{max-width:none}header h1{max-width:946px;margin:0 auto 6px;font-size:clamp(24px,5vw,34px)}header p{max-width:946px;margin:auto;color:#d9e2ff}
+main{padding:14px;display:grid;gap:14px}.panel{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:15px;box-shadow:0 2px 8px #10182808}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.stat{background:#f8faff;border-radius:11px;padding:11px}.stat strong{display:block;font-size:23px}.stat span{font-size:12px;color:var(--muted)}
+.progress{height:9px;background:#e9edf5;border-radius:99px;overflow:hidden;margin-top:10px}.progress div{height:100%;background:var(--accent);width:0}
+h2{font-size:18px;margin:0 0 11px}.controls{display:flex;flex-wrap:wrap;gap:8px}input,select,button{font:inherit;border:1px solid var(--line);border-radius:10px;padding:10px;background:#fff;color:var(--ink)}input[type=search]{flex:1;min-width:140px}button{font-weight:650;cursor:pointer}button.primary{background:var(--accent);border-color:var(--accent);color:white}button:disabled{opacity:.5}
+.day{border:1px solid var(--line);border-radius:12px;background:#fff;padding:12px;margin:8px 0}.day.done{background:#f0fbf6;border-color:#a6e5c8}.daytop{display:flex;gap:9px;align-items:flex-start}.daytop input{width:19px;height:19px;margin-top:3px;accent-color:var(--green)}.daybody{flex:1;min-width:0}.daytitle{font-weight:750}.date{font-size:12px;color:var(--muted)}.task{margin-top:4px}.tag{font-size:11px;background:#edf2ff;color:#3448a5;border-radius:99px;padding:3px 7px;white-space:nowrap}.done .tag{background:#d9f7e8;color:#126b49}.note{width:100%;margin-top:9px;font-size:13px}.muted{font-size:12px;color:var(--muted)}.sectiontitle{margin:4px 0 10px;color:#3448a5;font-size:15px}.notice{padding:11px;border-radius:11px;background:#fff6e8;border:1px solid #f3d1a4;color:#7a3e00;margin:9px 0}.empty{text-align:center;color:var(--muted);padding:24px}
+@media(max-width:480px){main{padding:10px}.panel{padding:12px}.stats{grid-template-columns:repeat(3,minmax(0,1fr))}.stat strong{font-size:20px}.tag{white-space:normal}}
+</style>
+</head>
+<body>
+<header><h1>CA Foundation Tracker</h1><p>61-day plan · 13 Oct – 12 Dec 2026 · Your study progress, in one place.</p></header>
+<main>
+<section class="panel">
+ <div class="stats">
+  <div class="stat"><strong id="doneCount">0</strong><span>Days completed</span></div>
+  <div class="stat"><strong id="leftCount">61</strong><span>Days remaining</span></div>
+  <div class="stat"><strong id="pct">0%</strong><span>Completed</span></div>
+ </div>
+ <div class="progress"><div id="bar"></div></div>
+ <p id="summary" class="muted">Your checkmarks and notes save on this device.</p>
+ <div class="controls">
+  <button id="notifyBtn" class="primary">Enable reminders</button>
+  <button id="installBtn" hidden>Install app</button>
+ </div>
+ <p class="muted" id="notifInfo">Reminders need notification permission. Browser support and delivery while closed vary by phone.</p>
+</section>
+<section class="panel">
+ <h2>Today's plan & catch-up</h2>
+ <div id="todayPanel"></div>
+</section>
+<section class="panel">
+ <h2>Find a chapter</h2>
+ <div class="controls">
+  <input id="search" type="search" placeholder="Search subject or chapter">
+  <select id="phase"><option value="all">All phases</option><option value="1">Phase 1</option><option value="2">Phase 2</option><option value="3">Phase 3</option></select>
+  <select id="status"><option value="all">All statuses</option><option value="pending">Pending</option><option value="done">Completed</option><option value="buffer">Buffer days</option></select>
+ </div>
+</section>
+<div id="schedule"></div>
+<section class="panel">
+ <h2>Back up your progress</h2>
+ <div class="controls">
+  <button id="export">Export backup</button>
+  <button id="import">Import backup</button><input id="file" type="file" accept="application/json,.json" hidden>
+  <button id="reset">Reset progress</button>
+ </div>
+ <p class="muted">Use Export backup before changing phones or clearing browser data.</p>
+</section>
+</main>
+<script src="app.js"></script>
+</body>
+</html>
